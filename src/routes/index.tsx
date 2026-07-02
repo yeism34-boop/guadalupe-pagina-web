@@ -281,10 +281,10 @@ function GuadalupePage() {
           <div>
             <div className="text-xs uppercase tracking-widest text-white/60 mb-4">Síguenos</div>
             <div className="flex gap-3">
-              <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
                 <Facebook className="h-4 w-4" />
               </a>
             </div>
