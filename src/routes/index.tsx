@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  MapPin, Calendar, UtensilsCrossed, Landmark,
-  Sparkles, ArrowRight, Menu, X, Instagram, Facebook, Phone, Mail,
+  MapPin, UtensilsCrossed, Landmark,
+  ArrowRight, Menu, X, Instagram, Facebook, Phone, Mail,
   ExternalLink, Globe, CloudSun, Compass,
 } from "lucide-react";
 
