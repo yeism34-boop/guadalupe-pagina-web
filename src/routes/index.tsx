@@ -298,18 +298,31 @@ function GuadalupePage() {
   );
 }
 
-function InfoRow({ icon: Icon, label, text }: { icon: any; label: string; text: string }) {
-  return (
-    <div className="flex items-start gap-4 border-b border-border pb-4">
-      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/5 text-primary">
+function InfoRow({ icon: Icon, label, text, href, external }: { icon: any; label: string; text: string; href?: string; external?: boolean }) {
+  const content = (
+    <>
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
         <Icon className="h-4 w-4" />
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-        <div className="text-foreground mt-0.5">{text}</div>
+        <div className="text-foreground mt-0.5 group-hover:text-primary transition-colors">{text}</div>
       </div>
-    </div>
+      {href && <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity mt-1" />}
+    </>
   );
+  if (href) {
+    return (
+      <a
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="flex items-start gap-4 border-b border-border pb-4 group"
+      >
+        {content}
+      </a>
+    );
+  }
+  return <div className="flex items-start gap-4 border-b border-border pb-4 group">{content}</div>;
 }
 
 function Sello({ scrolled, light }: { scrolled?: boolean; light?: boolean }) {
