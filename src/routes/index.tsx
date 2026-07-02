@@ -1,26 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  MapPin, Calendar, Camera, UtensilsCrossed, Landmark, Mountain,
-  Church, Sparkles, ArrowRight, Menu, X, Instagram, Facebook, Phone, Mail,
+  MapPin, Calendar, UtensilsCrossed, Landmark,
+  Sparkles, ArrowRight, Menu, X, Instagram, Facebook, Phone, Mail,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-guadalupe.jpg";
-import plazaImg from "@/assets/plaza.jpg";
-import cerroImg from "@/assets/cerro.jpg";
-import santuarioImg from "@/assets/santuario.jpg";
 import valleImg from "@/assets/valle.jpg";
 import panImg from "@/assets/pan-pavo.jpg";
-import romeriaImg from "@/assets/romeria.jpg";
 import dulcesImg from "@/assets/dulces.jpg";
-import portalesImg from "@/assets/portales.jpg";
-import feriaImg from "@/assets/feria.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Guadalupe, La Libertad — Descubre el valle Jequetepeque" },
-      { name: "description", content: "Guía turística y cultural del distrito de Guadalupe, Pacasmayo. Atractivos, gastronomía, festividades, galería e información para visitantes." },
+      { name: "description", content: "Guía turística y cultural del distrito de Guadalupe, Pacasmayo. Gastronomía e información para visitantes." },
       { property: "og:title", content: "Guadalupe, La Libertad" },
       { property: "og:description", content: "Tradición, historia y sabor en el corazón del valle Jequetepeque." },
     ],
@@ -30,28 +24,8 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   { href: "#inicio", label: "Inicio" },
-  { href: "#turismo", label: "Turismo" },
-  { href: "#cultura", label: "Cultura" },
   { href: "#gastronomia", label: "Gastronomía" },
-  { href: "#agenda", label: "Agenda" },
-  { href: "#galeria", label: "Galería" },
   { href: "#directorio", label: "Directorio" },
-];
-
-const PLACES = [
-  { img: plazaImg, title: "Plaza de Armas", desc: "El corazón cívico del distrito, rodeado de portales y arquitectura tradicional.", icon: Landmark },
-  { img: cerroImg, title: "Cerro Namúl", desc: "El mirador natural coronado por la capilla de la Virgen, con vistas al valle.", icon: Mountain },
-  { img: santuarioImg, title: "Santuario de la Virgen", desc: "Templo principal con altar dorado, centro de la devoción guadalupana.", icon: Church },
-  { img: portalesImg, title: "Portales de la Plaza", desc: "Arcadas históricas que enmarcan la vida cotidiana del pueblo.", icon: Landmark },
-  { img: valleImg, title: "Valle Jequetepeque", desc: "Extensos campos de arroz y caña que rodean al distrito de horizonte a horizonte.", icon: Sparkles },
-  { img: romeriaImg, title: "Romería de la Virgen", desc: "Procesión patronal con devotos llegados de toda la región norte.", icon: Sparkles },
-];
-
-const TIMELINE = [
-  { year: "Pre-1500", title: "Origen prehispánico", text: "Asentamientos del valle Jequetepeque y la cultura Pacasmayo configuran el territorio." },
-  { year: "Siglo XVI", title: "Devoción guadalupana", text: "Llega la imagen de Nuestra Señora de Guadalupe y nace un centro de peregrinación." },
-  { year: "Siglo XIX", title: "Consolidación del pueblo", text: "Guadalupe se afianza como nudo agrícola y cultural del norte peruano." },
-  { year: "Hoy", title: "Identidad viva", text: "Tradiciones, ferias y romería mantienen viva la cultura local cada año." },
 ];
 
 const FOOD = [
@@ -60,27 +34,9 @@ const FOOD = [
   { img: valleImg, title: "Productos del valle", desc: "Arroz, frutas y productos frescos directamente del campo jequetepecano." },
 ];
 
-const EVENTS = [
-  { date: "8 DIC", title: "Feria de la Virgen de Guadalupe", place: "Plaza de Armas", desc: "La gran celebración patronal con misa, romería y feria popular." , img: romeriaImg },
-  { date: "JUL", title: "Aniversario del distrito", place: "Centro de Guadalupe", desc: "Desfiles cívicos, actos culturales y muestras locales.", img: plazaImg },
-  { date: "TODO EL AÑO", title: "Ferias gastronómicas", place: "Recinto ferial", desc: "Sabores del valle, panes, dulces y platos típicos en un solo lugar.", img: feriaImg },
-];
-
-const GALLERY = [
-  { img: cerroImg, span: "row-span-2" },
-  { img: plazaImg, span: "" },
-  { img: romeriaImg, span: "" },
-  { img: valleImg, span: "row-span-2" },
-  { img: portalesImg, span: "" },
-  { img: feriaImg, span: "" },
-  { img: dulcesImg, span: "" },
-  { img: santuarioImg, span: "" },
-];
-
 function GuadalupePage() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lightbox, setLightbox] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -121,7 +77,7 @@ function GuadalupePage() {
           </nav>
 
           <a
-            href="#turismo"
+            href="#gastronomia"
             className={`hidden lg:inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm transition-colors ${
               scrolled
                 ? "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -184,11 +140,11 @@ function GuadalupePage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#turismo" className="btn-primary !bg-white !text-primary hover:!bg-white/90">
-              Explorar turismo <ArrowRight className="h-4 w-4" />
+            <a href="#gastronomia" className="btn-primary !bg-white !text-primary hover:!bg-white/90">
+              Explorar sabores <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#galeria" className="btn-ghost">
-              <Camera className="h-4 w-4" /> Ver galería
+            <a href="#directorio" className="btn-ghost">
+              <MapPin className="h-4 w-4" /> Planifica tu visita
             </a>
           </div>
 
@@ -204,106 +160,6 @@ function GuadalupePage() {
                 <div className="text-xs text-white/75 mt-0.5">{s.v}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INTRO TURISMO */}
-      <section id="turismo" className="py-24 sm:py-32">
-        <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <span className="eyebrow">Turismo en Guadalupe</span>
-            <h2 className="section-title mt-4">
-              Un valle que une historia, fe y paisaje.
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Guadalupe, en la provincia de Pacasmayo, combina historia, cultura, devoción, paisajes agrícolas y una identidad viva que invita a descubrir sus calles, su plaza, sus tradiciones y sus sabores.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["Patrimonio", "Religioso", "Naturaleza", "Gastronomía", "Cultura"].map((t) => (
-                <span key={t} className="chip">{t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden">
-              <img src={cerroImg} alt="Cerro de la Virgen" loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-5 max-w-[230px] shadow-xl">
-              <div className="text-xs uppercase tracking-widest text-[var(--color-marian)]">Cerro Namúl</div>
-              <div className="font-serif text-xl mt-1">Mirador del valle</div>
-              <div className="text-xs text-muted-foreground mt-1">Devoción y paisaje en un solo lugar.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LUGARES */}
-      <section className="py-20 bg-muted/60">
-        <div className="container-x">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <span className="eyebrow">Atractivos</span>
-              <h2 className="section-title mt-4">Lugares para descubrir</h2>
-            </div>
-            <p className="text-muted-foreground max-w-md">
-              Plaza, cerro, santuario y campos: cada rincón cuenta una parte de la historia guadalupana.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PLACES.map((p) => (
-              <article key={p.title} className="card-soft group">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    loading="lazy"
-                    width={1200}
-                    height={900}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--color-accent-foreground)]">
-                    <p.icon className="h-3.5 w-3.5" /> Atractivo
-                  </div>
-                  <h3 className="font-serif text-2xl mt-2 text-primary">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                  <button className="mt-5 inline-flex items-center gap-1.5 text-sm text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
-                    Conocer más <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CULTURA / HISTORIA */}
-      <section id="cultura" className="py-24 sm:py-32">
-        <div className="container-x">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <span className="eyebrow">Historia y cultura</span>
-              <h2 className="section-title mt-4">Un pueblo con raíces profundas.</h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed">
-                La historia de Guadalupe se remonta a la época prehispánica y se fortalece con la llegada de la devoción a Nuestra Señora de Guadalupe. Su identidad se expresa en sus celebraciones religiosas, su arquitectura, sus tradiciones populares y el vínculo de la comunidad con el valle.
-              </p>
-            </div>
-
-            <ol className="lg:col-span-7 relative border-l-2 border-accent/40 pl-8 space-y-10">
-              {TIMELINE.map((t, i) => (
-                <li key={i} className="relative">
-                  <span className="absolute -left-[42px] top-1 grid h-5 w-5 place-items-center rounded-full bg-accent text-[10px] font-medium text-accent-foreground">
-                    {i + 1}
-                  </span>
-                  <div className="text-xs uppercase tracking-widest text-[var(--color-marian)]">{t.year}</div>
-                  <div className="font-serif text-2xl text-primary mt-1">{t.title}</div>
-                  <p className="text-muted-foreground mt-1.5">{t.text}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </section>
@@ -338,77 +194,6 @@ function GuadalupePage() {
         </div>
       </section>
 
-      {/* AGENDA */}
-      <section id="agenda" className="py-24">
-        <div className="container-x">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <span className="eyebrow">Agenda</span>
-              <h2 className="section-title mt-4">Festividades y eventos</h2>
-            </div>
-            <p className="text-muted-foreground max-w-md">
-              Vive el calendario más vibrante del valle Jequetepeque.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {EVENTS.map((e) => (
-              <article key={e.title} className="card-soft relative">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img src={e.img} alt={e.title} loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
-                </div>
-                <div className="absolute top-4 left-4 bg-primary text-primary-foreground rounded-xl px-3 py-2 text-center min-w-[60px]">
-                  <div className="text-[10px] tracking-widest uppercase opacity-80">Fecha</div>
-                  <div className="font-serif text-sm leading-tight mt-0.5">{e.date}</div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl text-primary">{e.title}</h3>
-                  <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <MapPin className="h-3.5 w-3.5" /> {e.place}
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground">{e.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GALERÍA */}
-      <section id="galeria" className="py-20 bg-muted/60">
-        <div className="container-x">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="eyebrow justify-center">Galería</span>
-            <h2 className="section-title mt-4">Postales de Guadalupe</h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
-            {GALLERY.map((g, i) => (
-              <button
-                key={i}
-                onClick={() => setLightbox(g.img)}
-                className={`relative overflow-hidden rounded-xl group ${g.span}`}
-              >
-                <img src={g.img} alt={`Foto ${i + 1}`} loading="lazy" width={1200} height={900} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {lightbox && (
-        <div
-          onClick={() => setLightbox(null)}
-          className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 animate-float-up"
-        >
-          <button className="absolute top-6 right-6 text-white" aria-label="Cerrar">
-            <X className="h-6 w-6" />
-          </button>
-          <img src={lightbox} alt="Vista ampliada" className="max-h-[90vh] max-w-[92vw] rounded-xl object-contain" />
-        </div>
-      )}
-
       {/* DIRECTORIO */}
       <section id="directorio" className="py-24">
         <div className="container-x grid lg:grid-cols-2 gap-12">
@@ -429,9 +214,9 @@ function GuadalupePage() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { t: "Atractivos turísticos", d: "Plaza, cerro, santuario, valle." , i: Landmark },
-              { t: "Servicios locales", d: "Hospedajes, transporte y guías." , i: Sparkles },
-              { t: "Festividades", d: "Calendario de fiestas patronales." , i: Calendar },
+              { t: "Atractivos turísticos", d: "Plaza, cerro, santuario, valle.", i: Landmark },
+              { t: "Servicios locales", d: "Hospedajes, transporte y guías.", i: Sparkles },
+              { t: "Festividades", d: "Calendario de fiestas patronales.", i: Calendar },
               { t: "Cómo llegar", d: "Vía Panamericana Norte, 700 km de Lima.", i: MapPin },
             ].map((b) => (
               <div key={b.t} className="card-soft p-6">
