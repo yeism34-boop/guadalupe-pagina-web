@@ -219,27 +219,35 @@ function GuadalupePage() {
             </p>
 
             <div className="mt-8 space-y-4">
-              <InfoRow icon={Landmark} label="Municipalidad Distrital" text="Plaza de Armas s/n, Guadalupe" />
-              <InfoRow icon={Phone} label="Contacto turístico" text="+51 044 000 000" />
-              <InfoRow icon={Mail} label="Correo" text="turismo@guadalupe.gob.pe" />
-              <InfoRow icon={MapPin} label="Ubicación" text="Provincia de Pacasmayo, La Libertad, Perú" />
+              <InfoRow icon={Landmark} label="Municipalidad Distrital" text="Plaza de Armas s/n, Guadalupe" href={MAPS_URL} external />
+              <InfoRow icon={Phone} label="Contacto turístico" text="+51 044 000 000" href={`tel:${PHONE}`} />
+              <InfoRow icon={Mail} label="Correo" text={EMAIL} href={`mailto:${EMAIL}`} />
+              <InfoRow icon={MapPin} label="Ubicación" text="Provincia de Pacasmayo, La Libertad, Perú" href={MAPS_URL} external />
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              { t: "Atractivos turísticos", d: "Plaza, cerro, santuario, valle.", i: Landmark },
-              { t: "Servicios locales", d: "Hospedajes, transporte y guías.", i: Sparkles },
-              { t: "Festividades", d: "Calendario de fiestas patronales.", i: Calendar },
-              { t: "Cómo llegar", d: "Vía Panamericana Norte, 700 km de Lima.", i: MapPin },
-            ].map((b) => (
-              <div key={b.t} className="card-soft p-6">
-                <b.i className="h-5 w-5 text-[var(--color-marian)]" />
-                <div className="font-serif text-xl text-primary mt-3">{b.t}</div>
-                <div className="text-sm text-muted-foreground mt-1">{b.d}</div>
-              </div>
-            ))}
+          <div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Enlaces útiles</div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {EXTERNAL_LINKS.map((b) => (
+                <a
+                  key={b.title}
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-soft p-6 group block hover:border-primary/40 transition-colors"
+                >
+                  <div className="flex items-center justify-between">
+                    <b.icon className="h-5 w-5 text-[var(--color-marian)]" />
+                    <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div className="font-serif text-xl text-primary mt-3">{b.title}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{b.desc}</div>
+                </a>
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 
