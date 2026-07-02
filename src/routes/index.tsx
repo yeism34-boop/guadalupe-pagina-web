@@ -3,7 +3,21 @@ import { useEffect, useState } from "react";
 import {
   MapPin, Calendar, UtensilsCrossed, Landmark,
   Sparkles, ArrowRight, Menu, X, Instagram, Facebook, Phone, Mail,
+  ExternalLink, Globe, CloudSun, Compass,
 } from "lucide-react";
+
+const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Guadalupe+Pacasmayo+La+Libertad+Peru";
+const INSTAGRAM_URL = "https://www.instagram.com/explore/tags/guadalupelalibertad/";
+const FACEBOOK_URL = "https://www.facebook.com/search/top?q=municipalidad%20distrital%20de%20guadalupe%20la%20libertad";
+const PHONE = "+51044000000";
+const EMAIL = "turismo@guadalupe.gob.pe";
+
+const EXTERNAL_LINKS = [
+  { title: "Municipalidad de Guadalupe", desc: "Portal oficial del distrito.", href: "https://www.google.com/search?q=municipalidad+distrital+de+guadalupe+la+libertad", icon: Landmark },
+  { title: "PromPerú · Visita Perú", desc: "Guía oficial de turismo del Perú.", href: "https://www.peru.travel/", icon: Globe },
+  { title: "Clima en Guadalupe", desc: "Pronóstico del SENAMHI para La Libertad.", href: "https://www.senamhi.gob.pe/?p=pronostico-detalle&localidad=0022", icon: CloudSun },
+  { title: "Cómo llegar", desc: "Ruta desde Lima por la Panamericana Norte.", href: "https://www.google.com/maps/dir/Lima,+Peru/Guadalupe,+La+Libertad,+Peru", icon: Compass },
+];
 
 import heroImg from "@/assets/hero-guadalupe.jpg";
 import valleImg from "@/assets/valle.jpg";
